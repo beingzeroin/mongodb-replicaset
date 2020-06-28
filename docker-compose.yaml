@@ -24,6 +24,11 @@ services:
     image: mongo:latest
     expose:
     - 27017
+    healthcheck:
+      test: ["CMD-SHELL", 'mongo --eval "printjson(db.serverStatus())"']
+      interval: 10s
+      timeout: 5s
+      retries: 5
     ports:
       - 27011:27017
     restart: always
@@ -36,6 +41,11 @@ services:
     image: mongo:latest
     expose:
     - 27017
+    healthcheck:
+      test: ["CMD-SHELL", 'mongo --eval "printjson(db.serverStatus())"']
+      interval: 10s
+      timeout: 5s
+      retries: 5
     ports:
     - 27012:27017
     restart: always
@@ -48,6 +58,11 @@ services:
     image: mongo:latest
     expose:
     - 27017
+    healthcheck:
+      test: ["CMD-SHELL", 'mongo --eval "printjson(db.serverStatus())"']
+      interval: 10s
+      timeout: 5s
+      retries: 5
     ports:
     - 27013:27017
     restart: always
@@ -65,6 +80,11 @@ services:
       - mongo1
       - mongo2
       - mongo3
+    healthcheck:
+      test: ["CMD-SHELL", 'mongo --eval "printjson(db.serverStatus())"']
+      interval: 10s
+      timeout: 5s
+      retries: 5
     volumes:
       - ./scripts:/scripts
     restart: "no"
